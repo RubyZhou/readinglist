@@ -1,0 +1,37 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")    /* 依赖Spring Boot插件 */
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'     /* 应用Spring Boot 插件 */
+
+group = 'com.manning'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+/**
+ *  起步依赖项
+ **/
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")    // 起步依赖 : 以 jpa 持久化数据
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")   // 起步依赖 : thymeleaf 作为视图
+    compile("org.springframework.boot:spring-boot-starter-web")         // 起步依赖 : 声明一个 web 应用程序
+    compile("org.springframework.boot:spring-boot-starter-security")    // 添加一个安全的起步依赖
+    runtime("com.h2database:h2")                                        // 运行依赖
+    testCompile("org.springframework.boot:spring-boot-starter-test")    // 起步依赖 : 测试
+
+}
